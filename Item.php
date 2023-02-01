@@ -13,17 +13,17 @@ class Item
         $this->product = $product;
 
         if ($quantity <= 0) {
-            throw new Exception("Não é possivel criar um item com quantidade zero ou negativo");
+            throw new Exception("Não é possível criar um item com quantidade zero ou negativo");
         }
 
         $this->quantity = $quantity;
 
         if ($discount > 100) {
-            throw new Exception("Não é possivel criar um item com desconto maior que 100%");
+            throw new Exception("Não é possível criar um item com desconto maior que 100%");
         }
 
         if ($discount < 0) {
-            throw new Exception("Não é possivel criar um produto com desconto negativo");
+            throw new Exception("Não é possível criar um produto com desconto negativo");
         }
 
         if ($discount !== 0) {

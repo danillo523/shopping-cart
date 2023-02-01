@@ -17,7 +17,7 @@ class ShoppingCart
         $currentItem = array_search($item, $this->items);
 
         if ($currentItem === false) {
-            throw new Exception("Não é possivel remover um item que não esta no carrinho");
+            throw new Exception("Não é possível remover um item que não está no carrinho");
         }
 
             unset($this->items[$currentItem]);
