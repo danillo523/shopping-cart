@@ -3,6 +3,7 @@ Exercício de POO em PHP com tema de carrinho de compras de acordo com as instru
 
 # Shopping Cart With Tests
 
+
 # 1. Problema
 
 Implementar um mecanismo de carrinho de compra que permita as operações de (1) adicionar um item, (2) remover um item, (3) listar os itens existentes no carrinho, (4) mostrar a quantidade de itens e (5) mostrar o valor total. Um item deve ser composto por um produto, uma quantidade e um valor de desconto. E, por fim, um produto deve ser composto por um id, uma descrição e um valor.
