@@ -1,4 +1,4 @@
-# Exercicio de carrinho de compras
+# Exercício de carrinho de compras
 Exercício de POO em PHP com tema de carrinho de compras de acordo com as instruçoes a baixo de acordo com as instruções
 
 # Shopping Cart With Tests
