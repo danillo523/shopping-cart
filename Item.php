@@ -10,31 +10,33 @@ class Item
 
     public function __construct(Product $product, int $quantity, float $discount = 0)
     {
+        $this->ensureQuantityIsValid($quantity);
+        $this->ensureDiscountIsValid($discount);
         $this->product = $product;
-
-        if ($quantity <= 0) {
-            throw new Exception("Não é possível criar um item com quantidade zero ou negativo");
-        }
-
         $this->quantity = $quantity;
+        $this->discount = $discount;
+    }
 
-        if ($discount > 100) {
-            throw new Exception("Não é possível criar um item com desconto maior que 100%");
-        }
-
-        if ($discount < 0) {
-            throw new Exception("Não é possível criar um produto com desconto negativo");
-        }
-
-        if ($discount !== 0) {
-            $this->discount = ($this->product->getPrice() * ($discount / 100));
-        } else {
-            $this->discount = $discount;
+    private function ensureQuantityIsValid(float $quantity)
+    {
+        if ($quantity <= 0) {
+            throw new Exception("Não é possível criar um item com quantidade zero ou negativo.");
         }
     }
 
-    public function getTotalWithDiscount(): float
+    private function ensureDiscountIsValid(float $discount)
     {
-        return ($this->product->getPrice() - $this->discount) * $this->quantity;
+        if ($discount < 0 || $discount > 100) {
+            throw new Exception("O item só pode ter desconto entre 0% a 100%.");
+        }
+    }
+
+    public function getTotal(): float
+    {
+        $totalWithDiscount = $this->product->price() * $this->quantity;
+        $discount = $this->discount / 100;
+        $discountPrice = $totalWithDiscount * $discount;
+
+        return $totalWithDiscount - $discountPrice;
     }
 }

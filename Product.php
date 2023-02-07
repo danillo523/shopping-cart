@@ -8,30 +8,36 @@ class Product
 
     public function __construct(int $id, string $description, float $price)
     {
-        if ($id <= 0) {
-            throw new Exception("Não é possível criar um produto com id negativo ou igual a 0");
-        }
-
+        $this->ensureIdIsValid($id);
+        $this->ensureDescriptionIsValid($description);
+        $this->ensurePriceIsValid($id);
         $this->id = $id;
-
-        if (empty($description)) {
-            throw new Exception("Não é possível criar um produto com descrição vazia");
-        }
-
-        if (strlen($description) <= 3) {
-            throw new Exception("Não é possível criar um produto com descrição menor ou igual a 3 caracteres");
-        }
-
         $this->description = $description;
-
-        if ($price <= 0) {
-            throw new Exception("Não é possivel criar um produto com preço menor ou igual a 0");
-        }
-
         $this->price = $price;
     }
 
-    public function getPrice(): float
+    private function ensureIdIsValid(int $id)
+    {
+        if ($id <= 0) {
+            throw new Exception("Não é possível criar um produto com id menor que 0.");
+        }
+    }
+
+    private function ensureDescriptionIsValid(String $description)
+    {
+        if (strlen($description) < 3) {
+            throw new Exception("Não é possível criar um produto sem descrição ou com menos de 3 letras.");
+        }
+    }
+
+    private function ensurePriceIsValid(float $price)
+    {
+        if ($price <= 0) {
+            throw new Exception("Não é possível criar um produto sem preço.");
+        }
+    }
+
+    public function price(): float
     {
         return $this->price;
     }

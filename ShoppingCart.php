@@ -20,7 +20,7 @@ class ShoppingCart
             throw new Exception("Não é possível remover um item que não está no carrinho");
         }
 
-            unset($this->items[$currentItem]);
+        unset($this->items[$currentItem]);
     }
 
     public function listItems(): array
@@ -35,10 +35,11 @@ class ShoppingCart
 
     public function getTotal(): float
     {
-        $total = 0;
-        foreach ($this->items as $item) {
-            $total += $item->getTotalWithDiscount();
-        }
-        return $total;
+        return array_reduce($this->items, [$this, 'sumItems'], 0);
+    }
+
+    private function sumItems(float $previous, Item $item): float
+    {
+        return $previous + $item->getTotal();
     }
 }
