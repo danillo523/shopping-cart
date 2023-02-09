@@ -12,19 +12,20 @@ class Item
     {
         $this->ensureQuantityIsValid($quantity);
         $this->ensureDiscountIsValid($discount);
+
         $this->product = $product;
         $this->quantity = $quantity;
         $this->discount = $discount;
     }
 
-    private function ensureQuantityIsValid(float $quantity)
+    private function ensureQuantityIsValid(float $quantity): void
     {
         if ($quantity <= 0) {
             throw new Exception("Não é possível criar um item com quantidade zero ou negativo.");
         }
     }
 
-    private function ensureDiscountIsValid(float $discount)
+    private function ensureDiscountIsValid(float $discount): void
     {
         if ($discount < 0 || $discount > 100) {
             throw new Exception("O item só pode ter desconto entre 0% a 100%.");

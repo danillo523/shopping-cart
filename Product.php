@@ -11,6 +11,7 @@ class Product
         $this->ensureIdIsValid($id);
         $this->ensureDescriptionIsValid($description);
         $this->ensurePriceIsValid($id);
+
         $this->id = $id;
         $this->description = $description;
         $this->price = $price;

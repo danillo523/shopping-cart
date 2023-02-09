@@ -26,7 +26,7 @@ try {
     //$shoppingCart->removeItem($item3);
     echo $shoppingCart->getTotal();
 } catch (Exception $e) {
-    echo "O seguinte erro aconteceu:".PHP_EOL;
-    echo $e->getMessage().PHP_EOL;
+    echo "O seguinte erro aconteceu:" . PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
